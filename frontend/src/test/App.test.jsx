@@ -1,0 +1,1 @@
+import {render,screen} from '@testing-library/react';import {MemoryRouter} from 'react-router-dom';import {AuthProvider} from '../contexts/AuthContext';import App from '../App';test('renders landing page',()=>{render(<MemoryRouter initialEntries={['/']}><AuthProvider><App/></AuthProvider></MemoryRouter>);expect(screen.getByText(/Every step handled/i)).toBeInTheDocument()})

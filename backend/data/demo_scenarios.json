@@ -1,0 +1,22 @@
+[
+  {
+    "id": "success",
+    "name": "Successful budget trip",
+    "instruction": "Plan a two-day trip from Coimbatore to Chennai for two people under ₹20000."
+  },
+  {
+    "id": "budget",
+    "name": "Budget exceeded",
+    "instruction": "Plan a three-day trip from Coimbatore to Mumbai for two people under ₹15000."
+  },
+  {
+    "id": "rain",
+    "name": "Heavy rain replanning",
+    "instruction": "Plan a weekend trip from Coimbatore to Chennai for two people under ₹25000 with beach activities."
+  },
+  {
+    "id": "tamil",
+    "name": "Tamil request",
+    "instruction": "கோயம்புத்தூரிலிருந்து சென்னைக்கு இரண்டு பேருக்கு ₹20000க்குள் இரண்டு நாள் பயணம் திட்டமிடு."
+  }
+]

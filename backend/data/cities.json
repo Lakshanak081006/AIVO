@@ -1,0 +1,401 @@
+{
+  "Coimbatore": {
+    "distance_base": 0,
+    "food_daily": 900,
+    "local_daily": 500,
+    "attractions": [
+      [
+        "Gedee Car Museum",
+        "Museum",
+        "indoor",
+        200,
+        4.5
+      ],
+      [
+        "VOC Park",
+        "Park",
+        "outdoor",
+        50,
+        4.2
+      ],
+      [
+        "Isha Yoga Center",
+        "Spiritual",
+        "mixed",
+        0,
+        4.7
+      ],
+      [
+        "Brookefields Mall",
+        "Shopping",
+        "indoor",
+        0,
+        4.3
+      ]
+    ]
+  },
+  "Chennai": {
+    "distance_base": 505,
+    "food_daily": 1000,
+    "local_daily": 600,
+    "attractions": [
+      [
+        "Government Museum",
+        "Museum",
+        "indoor",
+        250,
+        4.5
+      ],
+      [
+        "Marina Beach",
+        "Beach",
+        "outdoor",
+        0,
+        4.6
+      ],
+      [
+        "Kapaleeshwarar Temple",
+        "Heritage",
+        "mixed",
+        0,
+        4.7
+      ],
+      [
+        "Express Avenue Mall",
+        "Shopping",
+        "indoor",
+        0,
+        4.3
+      ],
+      [
+        "Fort St. George",
+        "Historical",
+        "indoor",
+        150,
+        4.4
+      ]
+    ]
+  },
+  "Bengaluru": {
+    "distance_base": 365,
+    "food_daily": 1100,
+    "local_daily": 700,
+    "attractions": [
+      [
+        "Bengaluru Palace",
+        "Historical",
+        "mixed",
+        500,
+        4.4
+      ],
+      [
+        "Lalbagh Botanical Garden",
+        "Park",
+        "outdoor",
+        100,
+        4.6
+      ],
+      [
+        "Visvesvaraya Museum",
+        "Museum",
+        "indoor",
+        250,
+        4.7
+      ],
+      [
+        "Cubbon Park",
+        "Park",
+        "outdoor",
+        0,
+        4.6
+      ],
+      [
+        "Orion Mall",
+        "Shopping",
+        "indoor",
+        0,
+        4.4
+      ]
+    ]
+  },
+  "Kochi": {
+    "distance_base": 195,
+    "food_daily": 1000,
+    "local_daily": 650,
+    "attractions": [
+      [
+        "Mattancherry Palace",
+        "Historical",
+        "indoor",
+        100,
+        4.4
+      ],
+      [
+        "Fort Kochi Beach",
+        "Beach",
+        "outdoor",
+        0,
+        4.5
+      ],
+      [
+        "Kerala Folklore Museum",
+        "Museum",
+        "indoor",
+        200,
+        4.6
+      ],
+      [
+        "Lulu Mall Kochi",
+        "Shopping",
+        "indoor",
+        0,
+        4.6
+      ]
+    ]
+  },
+  "Hyderabad": {
+    "distance_base": 930,
+    "food_daily": 1050,
+    "local_daily": 650,
+    "attractions": [
+      [
+        "Charminar",
+        "Historical",
+        "outdoor",
+        50,
+        4.6
+      ],
+      [
+        "Salar Jung Museum",
+        "Museum",
+        "indoor",
+        200,
+        4.7
+      ],
+      [
+        "Golconda Fort",
+        "Historical",
+        "outdoor",
+        250,
+        4.6
+      ],
+      [
+        "Inorbit Mall",
+        "Shopping",
+        "indoor",
+        0,
+        4.4
+      ]
+    ]
+  },
+  "Mysuru": {
+    "distance_base": 200,
+    "food_daily": 850,
+    "local_daily": 500,
+    "attractions": [
+      [
+        "Mysore Palace",
+        "Historical",
+        "mixed",
+        200,
+        4.8
+      ],
+      [
+        "Mysuru Zoo",
+        "Nature",
+        "outdoor",
+        150,
+        4.6
+      ],
+      [
+        "Rail Museum",
+        "Museum",
+        "mixed",
+        100,
+        4.4
+      ],
+      [
+        "Devaraja Market",
+        "Shopping",
+        "mixed",
+        0,
+        4.5
+      ]
+    ]
+  },
+  "Madurai": {
+    "distance_base": 215,
+    "food_daily": 800,
+    "local_daily": 450,
+    "attractions": [
+      [
+        "Meenakshi Temple",
+        "Heritage",
+        "mixed",
+        0,
+        4.8
+      ],
+      [
+        "Gandhi Memorial Museum",
+        "Museum",
+        "indoor",
+        0,
+        4.5
+      ],
+      [
+        "Thirumalai Nayakkar Palace",
+        "Historical",
+        "mixed",
+        100,
+        4.5
+      ],
+      [
+        "Vishaal De Mall",
+        "Shopping",
+        "indoor",
+        0,
+        4.2
+      ]
+    ]
+  },
+  "Ooty": {
+    "distance_base": 85,
+    "food_daily": 900,
+    "local_daily": 700,
+    "attractions": [
+      [
+        "Government Botanical Garden",
+        "Park",
+        "outdoor",
+        100,
+        4.6
+      ],
+      [
+        "Ooty Lake",
+        "Nature",
+        "outdoor",
+        200,
+        4.4
+      ],
+      [
+        "Tea Factory Museum",
+        "Museum",
+        "indoor",
+        150,
+        4.5
+      ],
+      [
+        "Rose Garden",
+        "Park",
+        "outdoor",
+        80,
+        4.5
+      ]
+    ]
+  },
+  "Pondicherry": {
+    "distance_base": 385,
+    "food_daily": 950,
+    "local_daily": 550,
+    "attractions": [
+      [
+        "Promenade Beach",
+        "Beach",
+        "outdoor",
+        0,
+        4.6
+      ],
+      [
+        "Pondicherry Museum",
+        "Museum",
+        "indoor",
+        100,
+        4.3
+      ],
+      [
+        "Aurobindo Ashram",
+        "Spiritual",
+        "indoor",
+        0,
+        4.5
+      ],
+      [
+        "White Town",
+        "Heritage",
+        "mixed",
+        0,
+        4.7
+      ]
+    ]
+  },
+  "Mumbai": {
+    "distance_base": 1250,
+    "food_daily": 1300,
+    "local_daily": 800,
+    "attractions": [
+      [
+        "Gateway of India",
+        "Historical",
+        "outdoor",
+        0,
+        4.7
+      ],
+      [
+        "Chhatrapati Shivaji Maharaj Museum",
+        "Museum",
+        "indoor",
+        300,
+        4.6
+      ],
+      [
+        "Marine Drive",
+        "Beach",
+        "outdoor",
+        0,
+        4.7
+      ],
+      [
+        "Phoenix Marketcity",
+        "Shopping",
+        "indoor",
+        0,
+        4.5
+      ]
+    ]
+  },
+  "Delhi": {
+    "distance_base": 2450,
+    "food_daily": 1200,
+    "local_daily": 750,
+    "attractions": [
+      [
+        "India Gate",
+        "Historical",
+        "outdoor",
+        0,
+        4.7
+      ],
+      [
+        "National Museum",
+        "Museum",
+        "indoor",
+        250,
+        4.6
+      ],
+      [
+        "Red Fort",
+        "Historical",
+        "outdoor",
+        250,
+        4.6
+      ],
+      [
+        "Select Citywalk",
+        "Shopping",
+        "indoor",
+        0,
+        4.5
+      ]
+    ]
+  }
+}
