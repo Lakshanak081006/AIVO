@@ -1,8 +1,8 @@
-import {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
-import {api} from '../api/client'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { api } from '../api/client'
 import VoiceInput from '../components/VoiceInput'
-import {ErrorBox, Spinner} from '../components/Common'
+import { ErrorBox } from '../components/Common'
 
 const PLAN_BG = 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80'
 const examples = [
@@ -10,38 +10,59 @@ const examples = [
   'Plan a three-day trip from Coimbatore to Mumbai for two people next weekend under ₹15000.',
   'Plan a weekend trip from Coimbatore to Bengaluru for three people under ₹25000.',
 ]
-const AGENTS = ['Requirement','Planner','Transport','Hotel','Weather','Attraction','Itinerary','Budget','Alternative','Replanning']
+const AGENTS = [
+  { name: 'Requirement', action: 'Extracting origin, destination, budget & constraints...' },
+  { name: 'Planner', action: 'Building task graph & parallel execution strategy...' },
+  { name: 'Transport', action: 'Searching train, flight & bus options...' },
+  { name: 'Hotel', action: 'Filtering 4★ & 5★ hotels with top guest reviews...' },
+  { name: 'Weather', action: 'Fetching day-wise weather forecast & rain probability...' },
+  { name: 'Attraction', action: 'Matching indoor museum & outdoor landmark activities...' },
+  { name: 'Itinerary', action: 'Generating hour-by-hour day-wise timeline...' },
+  { name: 'Budget', action: 'Calculating cost breakdown & cheaper alternatives...' }
+]
 
 export default function NewPlan() {
   const [instruction, setInstruction] = useState(examples[0])
   const [language, setLanguage] = useState('English')
   const [loading, setLoading] = useState(false)
+  const [activeStep, setActiveStep] = useState(0)
   const [error, setError] = useState()
   const [clarify, setClarify] = useState(null)
   const [answer, setAnswer] = useState('')
   const nav = useNavigate()
 
+  useEffect(() => {
+    let timer
+    if (loading) {
+      setActiveStep(0)
+      timer = setInterval(() => {
+        setActiveStep(prev => (prev < AGENTS.length - 1 ? prev + 1 : prev))
+      }, 400)
+    }
+    return () => clearInterval(timer)
+  }, [loading])
+
   const submit = async () => {
     setLoading(true); setError(null)
     try {
-      const r = await api.post('/travel/plan', {instruction, response_language: language})
+      const r = await api.post('/travel/plan', { instruction, response_language: language })
       if (r.data.status === 'clarification_required') setClarify(r.data)
-      else nav(`/plans/${r.data.plan_id}`)
-    } catch(e) { setError(e) }
-    finally { setLoading(false) }
+      else {
+        setTimeout(() => nav(`/plans/${r.data.plan_id}`), 800)
+      }
+    } catch(e) { setError(e); setLoading(false) }
   }
 
   const respond = async () => {
     setLoading(true)
     try {
-      const r = await api.post('/travel/clarify', {request_id: clarify.request_id, answer})
+      const r = await api.post('/travel/clarify', { request_id: clarify.request_id, answer })
       if (r.data.status === 'clarification_required') setClarify(r.data)
-      else nav(`/plans/${r.data.plan_id}`)
-    } catch(e) { setError(e) }
-    finally { setLoading(false) }
+      else {
+        setTimeout(() => nav(`/plans/${r.data.plan_id}`), 800)
+      }
+    } catch(e) { setError(e); setLoading(false) }
   }
-
-  if (loading) return <Spinner/>
 
   return (
     <>
@@ -66,8 +87,8 @@ export default function NewPlan() {
           </label>
           <VoiceInput value={instruction} onChange={setInstruction} language={language==='Tamil'?'ta-IN':language==='Hindi'?'hi-IN':'en-IN'}/>
           <ErrorBox error={error}/>
-          <button className="primary" onClick={submit} style={{width:'100%',marginTop:8,padding:'12px'}}>
-            Generate Trip Plan
+          <button className="primary" onClick={submit} disabled={loading} style={{width:'100%',marginTop:8,padding:'12px'}}>
+            {loading ? 'Executing Step-by-Step Multi-Agent Plan...' : 'Generate Trip Plan'}
           </button>
         </div>
 
@@ -86,11 +107,11 @@ export default function NewPlan() {
           <div className="panel" style={{padding:0,overflow:'hidden'}}>
             <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=70" alt="agents" style={{width:'100%',height:110,objectFit:'cover'}}/>
             <div style={{padding:'16px 20px'}}>
-              <h3 style={{margin:'0 0 12px',fontSize:15}}>Agents that will run</h3>
+              <h3 style={{margin:'0 0 12px',fontSize:15}}>Autonomous Agents Pipeline</h3>
               <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:6}}>
-                {AGENTS.map(x=>(
-                  <span key={x} style={{fontSize:12,fontWeight:600,color:'var(--blue)',background:'#eef2ff',padding:'5px 10px',borderRadius:6}}>
-                    {x}
+                {AGENTS.map((x, idx)=>(
+                  <span key={x.name} style={{fontSize:12,fontWeight:600,color: loading && idx <= activeStep ? '#1e40af' : 'var(--blue)',background: loading && idx <= activeStep ? '#dbeafe' : '#eef2ff',padding:'5px 10px',borderRadius:6}}>
+                    {loading && idx === activeStep ? '⚡ ' : ''}{x.name} Agent
                   </span>
                 ))}
               </div>
@@ -98,6 +119,43 @@ export default function NewPlan() {
           </div>
         </div>
       </div>
+
+      {/* Step-by-Step execution modal */}
+      {loading && (
+        <div className="modal-back">
+          <div className="modal" style={{maxWidth:500}}>
+            <h3 style={{marginTop:0}}>🤖 Multi-Agent Orchestration in Progress</h3>
+            <p style={{fontSize:13,color:'#666',marginBottom:16}}>Executing step-by-step autonomous planning workflow...</p>
+            <div style={{display:'flex',flexDirection:'column',gap:10}}>
+              {AGENTS.map((ag, i) => {
+                const isDone = i < activeStep
+                const isCurrent = i === activeStep
+                return (
+                  <div key={ag.name} style={{
+                    display:'flex',
+                    alignItems:'center',
+                    gap:12,
+                    padding:'8px 12px',
+                    borderRadius:8,
+                    background: isCurrent ? '#eff6ff' : isDone ? '#f0fdf4' : '#f9fafb',
+                    border: isCurrent ? '1px solid #bfdbfe' : isDone ? '1px solid #bbf7d0' : '1px solid #f3f4f6'
+                  }}>
+                    <span style={{fontSize:16}}>
+                      {isDone ? '✅' : isCurrent ? '⏳' : '⚪'}
+                    </span>
+                    <div style={{flex:1}}>
+                      <div style={{fontSize:13,fontWeight:600,color: isCurrent ? '#1e40af' : isDone ? '#15803d' : '#9ca3af'}}>
+                        {ag.name} Agent
+                      </div>
+                      {isCurrent && <div style={{fontSize:11,color:'#3b82f6'}}>{ag.action}</div>}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      )}
 
       {clarify && (
         <div className="modal-back">

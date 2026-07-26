@@ -1,1 +1,17 @@
-import React from 'react';import ReactDOM from 'react-dom/client';import {BrowserRouter} from 'react-router-dom';import {AuthProvider} from './contexts/AuthContext';import App from './App';import './styles/app.css';ReactDOM.createRoot(document.getElementById('root')).render(<React.StrictMode><BrowserRouter><AuthProvider><App/></AuthProvider></BrowserRouter></React.StrictMode>)
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { HashRouter } from 'react-router-dom'
+import { AuthProvider } from './contexts/AuthContext'
+import App from './App'
+import './styles/app.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <HashRouter>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </HashRouter>
+  </React.StrictMode>
+)
+

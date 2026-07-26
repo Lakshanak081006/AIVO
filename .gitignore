@@ -38,3 +38,7 @@ build/
 # Node
 node_modules/
 frontend/dist/
+
+# Nested duplicate folder
+AIVA-autonomous-travel-assistant-fixed/
+
